@@ -1,0 +1,29 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    {% include javascripts.html %}
+    {% include stylesheets.html %}
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{{ site.favicon | relative_url }}" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    {% if site.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.theme_settings.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.google_analytics }}');
+    </script>
+    {% endif %}
+    {%- if page.title != site.hide_title -%}
+      <title>{{ page.title }} | {{site.title}}</title>
+    {%- else -%}
+      <title>{{site.title}}</title>
+    {%- endif -%}
+    {% include metadata.html %}
+</head>
